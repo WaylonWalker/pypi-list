@@ -27,7 +27,7 @@ jobs:
           python pypi-list.py --full
       - run: |
           [[ -d site ]] || mkdir site
-          sp data/*.json site
+          cp data/*.json site
       - name: GitHub Pages
         uses: crazy-max/ghaction-github-pages@v1.4.0
         with:
