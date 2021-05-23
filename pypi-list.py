@@ -5,6 +5,8 @@ from kedro.runner.sequential_runner import SequentialRunner
 from kedro.extras.datasets.pickle.pickle_dataset import PickleDataSet
 from kedro.extras.datasets.json import JSONDataSet
 
+import requests
+
 import logging
 
 logger = logging.getLogger(__name__)
