@@ -1,0 +1,37 @@
+name: Deploy pypi-list
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      
+      - name: Setup Python
+        uses: actions/setup-python@v2.2.2
+        with:
+          python-version: 3.9
+      - run: |
+          pip install -r requirements.txt
+      - run: |
+          python pypi-list.py
+      - run: |
+          [[ -d site ]] || mkdir site
+          sp data/*.json site
+      - name: GitHub Pages
+        uses: crazy-max/ghaction-github-pages@v1.4.0
+        with:
+          target_branch: docs
+          build_dir: site
+        env:
+          GITHUB_TOKEN: ${{ secrets.pat }}
