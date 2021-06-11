@@ -82,12 +82,14 @@ pipeline = Pipeline(
             inputs="packages",
             outputs="packages_json",
             name="packages_json",
+            tags=["json"],
         ),
         node(
             lambda x: x,
             inputs="available",
             outputs="available_json",
             name="available_json",
+            tags=["json"],
         ),
     ]
 )
