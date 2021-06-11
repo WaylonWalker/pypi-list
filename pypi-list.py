@@ -72,6 +72,12 @@ pipeline = Pipeline(
             name="available",
         ),
         node(
+            lambda words, packages: list(set(words) & set(packages)),
+            inputs=["words", "packages"],
+            outputs="unavailable",
+            name="unavailable",
+        ),
+        node(
             lambda x: x,
             inputs="packages",
             outputs="packages_json",
