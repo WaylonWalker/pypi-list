@@ -91,6 +91,13 @@ pipeline = Pipeline(
             name="available_json",
             tags=["json"],
         ),
+        node(
+            lambda x: x,
+            inputs="unavailable",
+            outputs="unavailable_json",
+            name="unavailable_json",
+            tags=["json"],
+        ),
     ]
 )
 
