@@ -60,22 +60,10 @@ pipeline = Pipeline(
             name="packages",
         ),
         node(
-            lambda packages: [package for package in packages if len(package) == 4],
-            inputs="packages",
-            outputs="four_letter_packages",
-            name="four_letter_packages",
-        ),
-        node(
             lambda words: words.split(),
             inputs="raw_words_alpha",
             outputs="words",
             name="words",
-        ),
-        node(
-            lambda words: [word for word in words if len(word) == 4],
-            inputs="words",
-            outputs="four_letter_words",
-            name="four_letter_words",
         ),
         node(
             lambda words, packages: list(set(words) - set(packages)),
