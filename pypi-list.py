@@ -97,9 +97,10 @@ pipeline = Pipeline(
 default_entries = {
     name: PickleDataSet(filepath=f"data/{name}.pkl") for name in pipeline.all_outputs()
 }
+
 json_outputs = {
-    "packages_json": JSONDataSet(filepath=f"data/packages.json"),
-    "available_json": JSONDataSet(filepath=f"data/available.json"),
+    name: JSONDataSet(filepath=f"data/{name.replace('_json', '')}.json")
+    for name in pipeline.only_nodes_with_tags("json").outputs()
 }
 
 
