@@ -1,3 +1,19 @@
+"""
+pypi-list
+
+Listing python packages from pypi, and finding available single word packages.
+
+
+## Run the Pipeline
+
+``` bash
+# Run with existing package data
+python pypi-list.py
+
+# Full run
+python pypi-list.py --full
+```
+"""
 import logging
 
 import requests
