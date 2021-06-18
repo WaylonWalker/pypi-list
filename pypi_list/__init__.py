@@ -29,6 +29,8 @@ from kedro.runner.sequential_runner import SequentialRunner
 
 logger = logging.getLogger(__name__)
 
+__version__ = "0.1.0"
+
 
 def get_body(packages):
 
@@ -136,7 +138,8 @@ catalog = DataCatalog(
 
 runner = SequentialRunner()
 
-if __name__ == "__main__":
+
+def main():
     import sys
 
     if "--full" in sys.argv:
@@ -146,3 +149,7 @@ if __name__ == "__main__":
             Pipeline([node for node in pipeline.nodes if "raw" not in node.name]),
             catalog,
         )
+
+
+if __name__ == "__main__":
+    main()
