@@ -22,7 +22,7 @@ jobs:
         with:
           python-version: 3.8
       - run: pip install -e .
-      - run: pypi-list
+      - run: pypi-list --full
       - run: |
           [[ -d site ]] || mkdir site
           cp data/*.json site
