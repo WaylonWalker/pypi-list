@@ -24,3 +24,10 @@ python pypi-list.py --full
 
 This pipeline run daily at `0:0` to generate a `packages.json`,
 `unavailable.json`, `avalilable.json`.
+
+## Development
+
+
+``` bash
+pip install -e ".[dev]"
+```
