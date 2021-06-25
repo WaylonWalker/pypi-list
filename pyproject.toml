@@ -1,7 +1,7 @@
 [tool.kedro]
 package_name = "pypi_list"
 project_name = "Pypi List"
-project_version = "0.2.0"
+project_version = "0.3.0"
 
 [tool.isort]
 multi_line_output = 3

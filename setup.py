@@ -22,7 +22,7 @@ dev_requires = Path("requirements_dev.txt").read_text().split()
 
 setup(
     name="pypi_list",
-    version="0.2.0",
+    version="0.3.0",
     packages=find_packages(),
     install_requires=requires,
     extras_require={
