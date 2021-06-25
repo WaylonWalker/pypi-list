@@ -30,5 +30,5 @@ setup(
         "dev": dev_requires,
         "prod": requires,
     },
-    entry_points={"console_scripts": ["pypi-list = pypi_list:main"]},
+    entry_points={"console_scripts": ["pypi-list = pypi_list:run_project"]},
 )
