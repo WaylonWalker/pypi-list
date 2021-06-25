@@ -31,3 +31,11 @@ This pipeline run daily at `0:0` to generate a `packages.json`,
 ``` bash
 pip install -e ".[dev]"
 ```
+
+This project includes a `pre-commit-config`, this ensures that each commit made
+to the project passes all checks that are also ran in CI. To setup pre-commit
+in your development environment run the follow command.
+
+``` bash
+pre-commit install
+```
