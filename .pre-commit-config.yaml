@@ -39,3 +39,11 @@ repos:
       hooks:
           - id: mypy
             exclude: tests/
+    - repo: https://github.com/econchick/interrogate
+      rev: '1.2.0'
+      hooks:
+      - id: interrogate
+        description: check for docstring coverage
+        entry: interrogate -f 100 -iIvv
+        types: [python]
+        exclude: docs
