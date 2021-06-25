@@ -1,3 +1,18 @@
+"""
+pypi-list uses setup tools for packaging.
+
+To Build pypi-list as a Python package
+
+    $ python setup.py sdist bdist_wheel
+
+Regular install
+
+    $ pip install -e .
+
+To setup local Development
+
+    $ pip install -e ".[dev]"
+"""
 from pathlib import Path
 
 from setuptools import find_packages, setup
