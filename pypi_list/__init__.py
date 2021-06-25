@@ -4,7 +4,7 @@ pypi-list
 Listing python packages from pypi, and finding available single word packages.
 
 
-## Run the Pipeline
+## Run the Pipeline at the command line
 
 ``` bash
 # Run with existing package data
@@ -13,6 +13,16 @@ python pypi-list.py
 # Full run
 python pypi-list.py --full
 ```
+
+## Run the Pipeline with a python repl
+
+``` python
+from pypi_list import run_project
+
+run_project()  # run local datasets only
+run_project(full=True)  # run full pipeline including network requests
+```
+
 """
 import logging
 
@@ -29,6 +39,7 @@ __version__ = "0.2.0"
 
 
 def get_body(packages):
+    """Get the body tag from the full page html."""
 
     tag = "<body>\n"
     index = packages.find(tag) + len(tag)
@@ -135,11 +146,36 @@ catalog = DataCatalog(
 runner = SequentialRunner()
 
 
-def main():
+def run_project(full=None):
+    """
+    Run the project.
+
+    Parameters
+    --------
+    full : bool
+        runs the full pipeline if True
+        skips network calls if False
+        checks sys.arv for --full if None
+
+    Returns
+    --------
+    None
+
+    Examples
+    --------
+    >>> from pypi_list import run_project
+    >>> run_project() # run local datasets only
+    >>> run_project(full=True) # run full pipeline including network requests
+
+    """
     import sys
 
-    if "--full" in sys.argv:
+    if "--full" in sys.argv and full is None:
+        full = True
+
+    if full:
         runner.run(pipeline, catalog)
+
     else:
         runner.run(
             Pipeline([node for node in pipeline.nodes if "raw" not in node.name]),
@@ -148,4 +184,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    run_project()
