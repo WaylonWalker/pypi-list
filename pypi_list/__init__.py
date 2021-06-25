@@ -25,6 +25,7 @@ run_project(full=True)  # run full pipeline including network requests
 
 """
 import logging
+from typing import List, Optional
 
 import requests
 from kedro.extras.datasets.json import JSONDataSet
@@ -38,7 +39,7 @@ logger = logging.getLogger(__name__)
 __version__ = "0.2.0"
 
 
-def get_body(packages):
+def get_body(packages: str) -> str:
     """Get the body tag from the full page html."""
 
     tag = "<body>\n"
@@ -48,7 +49,7 @@ def get_body(packages):
     return packages
 
 
-def remove_html_tags(text):
+def remove_html_tags(text: str) -> List[str]:
     """Remove html tags from a string"""
     import re
 
@@ -146,7 +147,7 @@ catalog = DataCatalog(
 runner = SequentialRunner()
 
 
-def run_project(full=None):
+def run_project(full: Optional[bool] = None):
     """
     Run the project.
 
